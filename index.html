@@ -1118,7 +1118,7 @@
     <nav class="rail" id="rail">
       <div class="rail-group-label">Início</div><button class="tab active" data-tab="overview"><span
           class="ico">🧭</span>Visão geral</button><button class="tab" data-tab="contatos"><span
-          class="ico">📇</span>Contatos</button>
+          class="ico">📇</span>Contatos</button><button class="tab" data-tab="fluxo"><span class="ico">🔀</span>Fluxo Interno</button>
       <div class="rail-group-label">Prefeitura de Itapevi</div><button class="tab" data-tab="prefeitura"><span
           class="ico">🏛️</span>Rede · Ramal · Manutenção</button><button class="tab"
         data-tab="prefeitura-prorrog"><span class="ico">⏳</span>Prorrogação</button>
@@ -1396,9 +1396,9 @@
               <div class="fig-caption">Modelo de carta requerimento.</div>
             </li>
 
-            <li><b>Conclusão:</b> Após o protocolo, atualizar o status para “Processo Encerrado” na planilha de
-              governança. Fulcrum, atualizar com todas as documentações recebidas e comprovante de protocolo. No Lecom,
-              avançar com o comprovante de protocolo. Conferir que tudo foi registrado antes de avançar o status.</li>
+            <li><b>Conclusão:</b> Após o protocolo, atualizar o status para “Processo Encerrado” na planilha de governança. No <b>Fulcrum</b>,
+                  atualizar com todas as documentações recebidas e comprovante de protocolo. No <b>Lecom</b>, avançar com o
+                  comprovante de protocolo. Conferir se tudo foi registrado antes de avançar o status.</li>
               <div class="step-imgs"><img class="tall" src="nathan/PROCESSO ENCERRADO.png"
                   alt="Figura 8 — Modelo de autorização do Demutran para ramais"></div>
               
@@ -1470,6 +1470,20 @@
           </ol>
         </div>
         <div class=""><span></span>
+        </div>
+      </section>
+      <section class="page" id="page-fluxo">
+        <div class="page-head">
+          <div class="kicker">FLUXO INTERNO</div>
+          <h2>Autorização para Obras em Via Pública</h2>
+          <p class="sub">Consulte o fluxo interno para acompanhar as etapas do processo de autorização.</p>
+        </div>
+        <div class="card">
+          <img
+            alt="Fluxo de Autorização para Obras em Via Pública — Fluxo interno"
+            class="internal-flow zoom"
+            src="nathan/Itapevi.jpeg"
+            style="display:block;width:100%;max-width:100%;height:auto;object-fit:contain;border:1px solid var(--line);border-radius:10px;cursor:zoom-in;background:#fff">
         </div>
       </section>
       <section class="page" id="page-info">
@@ -1574,7 +1588,7 @@
       };
       // Permite ampliar imagens dos passos, figuras e galerias, inclusive as criadas via JavaScript.
       document.addEventListener('click', e => {
-        const im = e.target.closest('.gallery img, .step-imgs img, .fig img');
+        const im = e.target.closest('.gallery img, .step-imgs img, .fig img, .zoom');
         if (!im || !lightbox || !lightboxImg) return;
         lightboxImg.src = im.currentSrc || im.src;
         lightboxImg.alt = im.alt || 'Imagem ampliada';
