@@ -975,6 +975,24 @@
       cursor: zoom-in
     }
 
+    /* Mantém as imagens e suas caixas no mesmo padrão das imagens altas
+       usadas em Encerramento de Obras. */
+    .post-auth-gallery .fig,
+    #prorrog-figs .fig {
+      width: fit-content;
+      max-width: 100%;
+      align-self: start;
+    }
+
+    .post-auth-gallery .fig img,
+    #prorrog-figs .fig img {
+      display: block;
+      width: auto;
+      max-width: 100%;
+      height: 250px;
+      object-fit: contain;
+    }
+
     .steps .gallery {
       margin: 10px 0 6px;
       align-items: start;
@@ -1262,8 +1280,8 @@
         <div class="info-card">
           <div><b>Endereço:</b> R. Agostinho Ferreira Campos, 675 — Jardim Nova Itapevi, Itapevi - SP, 06693-120</div>
           <div><b>Setor:</b> Secretaria de Obras e Trânsito</div>
-          <div><b>Portal:</b> <a href="https://itapevidigital.itapevi.sp.gov.br/atendimento/inicio" rel="noopener"
-              target="_blank">Itapevi Digital</a></div>
+          <div><b>Portal:</b><p> <a href="https://itapevidigital.itapevi.sp.gov.br/atendimento/inicio" rel="noopener"
+              target="_blank">Itapevi Digital</a> - Login: 61.856.571/0001-17 / Senha: Ls@070616</p></div>
         </div>
         <div class="card">
           <div class="pillrow"><button class="pill active" data-kind="rede"> Rede</button><button class="pill"
@@ -1627,7 +1645,7 @@
       const POS = [{"t": "Avançar o Lecom na etapa “Devolutiva do Órgão”", "d": "Após a retirada das autorizações na PM, avançar o LECOM na etapa Devolutiva do Órgão.", "imgs": [["aut1", "LECOM — etapa Devolutiva do Órgão"]], "k": true}, {"t": "Preencher o tipo de Autorização", "d": "Preencha corretamente o campo <b>Tipo de Autorização</b>, pois essa informação é utilizada na geração da carta de arquivamento para o CEDOC e impacta diretamente a criação de LECOM para o encerramento da obra.", "imgs": [["aut2", "Campo Tipo de Autorização"], ["aut3", "Campo Tipo de Autorização — exemplo"]], "k": false}, {"t": "Enviar o Informe de Autorização aos interessados da Comgás", "d": "Após avançar a autorização no Lecom, enviar o Informe de Autorização aos responsáveis da Comgás, conforme o segmento envolvido. O assunto do e-mail deve ser padronizado: <b>Autorização Obtida (Ramal/ Rede/ Manutenção) - PM xxxxx.</b><br><a href='https://bureauveritas.sharepoint.com/:x:/r/teams/BI268-COMGSAutorizaeseLicenas/Documents%20partages/07%20-%20OPERA%C3%87%C3%83O/01.%20Planejamento%20e%20Controle/01.%20Controle%20Geral/07.%20Respons%C3%A1veis%20COMG%C3%81S%20e%20PROJETISTAS/Respons%C3%A1veis%20COMG%C3%81S%20-%20REV24.xlsx?d=wa57f665b7ff5425882303bb116bab3c0&amp;csf=1&amp;web=1&amp;e=Ffbgvm' target='_blank' rel='noopener'>Responsáveis COMGÁS - REV24.xlsx</a> — planilha de contatos dos responsáveis Comgás.", "imgs": [["informe", "Informe de Autorização – Rede (exemplo)"]], "k": false}, {"t": "Inserir o anexo da autorização no Fulcrum", "d": "Após a emissão da autorização, anexar o documento no Fulcrum. Não esquecer de preencher a <b>data de obtenção da autorização</b> no Fulcrum.", "imgs": [["aut6", "Fulcrum — anexo da autorização"], ["aut7", "Fulcrum — Data de Obtenção da Autorização"]], "k": false}, {"t": "Somente para autorizações físicas: GR e entrega no CEDOC", "d": "Preencha a planilha da GR (Rede Comgás), entregue pessoalmente a documentação no CEDOC e arquive o comprovante que evidencia a atuação da BV até a conclusão da etapa de Autorizações.<br><a href='https://comgascloud.sharepoint.com/:x:/s/ControlesAdministrativosBVCG/IQBLZezQaLezQZGFGSdIBP2xAXMDjjF3Yy0_2csT39TXqnM?e=3NYRRB' target='_blank' rel='noopener'>GR ANDAMENTO ATUALIZADA.xlsx</a> — planilha GR (Rede Comgás). <div class='step-note'>⚠️ <b>Atenção:</b> o não cumprimento desta etapa pode impactar diretamente a criação dos LECOMs de Encerramento, gerando atrasos e pendências no processo.</div>", "imgs": [["aut8", "Planilha GR ANDAMENTO ATUALIZADA"]], "k": false}];
       function posLi(s) {
         return (s.k ? '<span class="step-kicker">Após a retirada das autorizações na PM</span><br>' : '') + `<b>${s.t}</b> — ${s.d}` +
-          (s.imgs.length ? `<div class="gallery">${s.imgs.map(([k, c]) => `<div class="fig"><img src="${AUT[k]}" alt="${c}" loading="lazy"><div class="figcap">${c}</div></div>`).join('')}</div>` : '');
+          (s.imgs.length ? `<div class="gallery post-auth-gallery">${s.imgs.map(([k, c]) => `<div class="fig"><img src="${AUT[k]}" alt="${c}" loading="lazy"><div class="figcap">${c}</div></div>`).join('')}</div>` : '');
       }
       ['rede', 'ramal', 'manutencao'].forEach(k => procedures[k].steps.push(...POS.map(s => [posLi(s), []])));
       const prorrogOl = document.querySelector('#page-prefeitura-prorrog ol.steps');
